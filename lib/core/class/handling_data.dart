@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:lottie/lottie.dart';
 
 import '../const/app_images.dart';
@@ -10,24 +9,26 @@ class HadlingData extends StatelessWidget {
   final Widget child;
 
   const HadlingData({
-    super.key,
+    Key? key,
     required this.stateRaqust,
     required this.child,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return stateRaqust == StateRaqust.Laoding
-        ? Lottie.asset(AppImages.loding)
-        : stateRaqust == StateRaqust.ofLineInternat
-            ? Lottie.asset(AppImages.noIntarnat)
-            : stateRaqust == StateRaqust.fuler
-                ? Lottie.asset(
-                    AppImages.isempty,
-                    alignment: Alignment.center,
-                  )
-                : stateRaqust == StateRaqust.fulerServer
-                    ? ListView(children: [Lottie.asset(AppImages.pagenot)])
-                    : child;
+    if (stateRaqust == StateRaqust.Laoding) {
+      return Lottie.asset(AppImages.loding);
+    } else if (stateRaqust == StateRaqust.ofLineInternat) {
+      return Lottie.asset(AppImages.noIntarnat);
+    } else if (stateRaqust == StateRaqust.fuler) {
+      return Lottie.asset(
+        AppImages.isempty,
+        alignment: Alignment.center,
+      );
+    } else if (stateRaqust == StateRaqust.fulerServer) {
+      return ListView(children: [Lottie.asset(AppImages.pagenot)]);
+    } else {
+      return child;
+    }
   }
 }

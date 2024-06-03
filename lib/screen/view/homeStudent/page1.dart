@@ -4,6 +4,9 @@ import 'package:managmentsh/Component/AppColors.dart';
 import 'package:managmentsh/controller/screen/page1_controller.dart';
 import 'package:managmentsh/core/class/handling_data.dart';
 
+import '../../../core/const/app_colors.dart';
+import '../../widget/page_one/item_page_one_widget.dart';
+
 class page1 extends StatelessWidget {
   const page1({super.key});
 
@@ -81,29 +84,8 @@ class page1 extends StatelessWidget {
                   itemCount: c.modles.length,
                   itemBuilder: (_, index) {
                     final m = c.modles[index];
-                    return InkWell(
-                      onTap: () {
-                        // Navigator.of(context).pushNamed("/coursepage");
-                      },
-                      child: Card(
-                        color: Colors.white70,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: ListTile(
-                          title: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              m.coursName!,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios_outlined,
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ),
+                    return ItemPageOneWidget(
+                      m: m,
                     );
                   },
                 ),

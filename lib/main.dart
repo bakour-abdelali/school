@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:managmentsh/Component/AppColors.dart';
 import 'package:managmentsh/core/servises/servises.dart';
 import 'package:managmentsh/get_pages.dart';
-import 'package:managmentsh/screen/view/Onboarding.dart';
 
 import 'bindings/inital_bindings.dart';
 
@@ -30,6 +29,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       getPages: getPages,
+      // home: const TestPackage(),
     );
   }
 }

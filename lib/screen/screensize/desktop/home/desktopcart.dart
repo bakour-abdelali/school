@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../../data/models/student_model.dart';
 
 // ignore: must_be_immutable
 class DesktpCard extends StatelessWidget {
-  double hightScreen;
-  double Widthscreen;
+  final StudentModel studentModel;
 
-  DesktpCard({super.key, required this.Widthscreen, required this.hightScreen});
+  DesktpCard({super.key, required this.studentModel});
   @override
   Widget build(BuildContext context) {
-    final Map<String, String> studentData = {
-      "Name": "Gasmi",
-      "LastName": "Aymen",
-      "StudentCode": "68797",
-      "Gard": "3rd hight schoole",
-    };
     // TODO: implement build
     return Center(
       child: Container(
-        height: hightScreen * 0.9,
-        width: Widthscreen * 0.9,
+        height: Get.height * 0.9,
+        width: Get.width * 0.9,
         decoration: BoxDecoration(
           border: Border.all(width: 2),
         ),
@@ -29,11 +25,11 @@ class DesktpCard extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               child: Image.asset(
                 "assets/images/qr-code.png",
-                width: Widthscreen * 0.4,
+                width: Get.width * 0.4,
               ),
             ),
             SizedBox(
-              width: Widthscreen * 0.2,
+              width: Get.width * 0.2,
             ),
             Expanded(
               flex: 2,
@@ -45,14 +41,14 @@ class DesktpCard extends StatelessWidget {
                     child: Row(
                       children: [
                         const Text(
-                          "الاسم : ",
+                          " الاسم : ",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          "${studentData['Name']}",
+                          "${studentModel.firstName}",
                           style: const TextStyle(
                             fontSize: 20,
                           ),
@@ -65,14 +61,14 @@ class DesktpCard extends StatelessWidget {
                     child: Row(
                       children: [
                         const Text(
-                          "اللقب: ",
+                          " اللقب : ",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          "${studentData['LastName']}",
+                          "${studentModel.lastName}",
                           style: const TextStyle(
                             fontSize: 20,
                           ),
@@ -81,18 +77,18 @@ class DesktpCard extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(10),
                     child: Row(
                       children: [
                         const Text(
-                          " رقم الطالب  : ",
+                          " رقم الطالب : ",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          "${studentData['StudentCode']}",
+                          "${studentModel.number}",
                           style: const TextStyle(
                             fontSize: 20,
                           ),
@@ -105,14 +101,14 @@ class DesktpCard extends StatelessWidget {
                     child: Row(
                       children: [
                         const Text(
-                          "السنة : ",
+                          "السنة  : ",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          "${studentData['Gard']}",
+                          "${studentModel.level}",
                           style: const TextStyle(
                             fontSize: 20,
                           ),

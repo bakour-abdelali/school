@@ -2,30 +2,22 @@ import 'package:get/get.dart';
 import 'package:managmentsh/controller/screen/homme_controller.dart';
 import 'package:managmentsh/core/class/state_raqust.dart';
 import 'package:managmentsh/core/class/stautus.dart';
-import 'package:managmentsh/core/const/app_routes.dart';
 import 'package:managmentsh/core/funcion/alert_not_cox.dart';
 import 'package:managmentsh/core/funcion/head_data.dart';
 
-import '../../data/models/cour_modle.dart';
-import '../../data/remot/screen/cour_data.dart';
+import '../../../data/models/cour_modle.dart';
+import '../../../data/remot/screen/cour_data.dart';
 
-class Page1Controller extends GetxController {
+class ViewSubscriptionNotOver extends GetxController {
   HommeController hommeController = Get.find();
   final CourData _data = CourData(Get.find());
   List<CourModel> modles = [];
   late StateRaqust stateRaqust;
-  goToViewTotarule(CourModel m) {
-    if (m.isExpired == "no") {
-      Get.toNamed(AppRoutes.coursepage, arguments: {"modle": m});
-    } else {
-      Get.snackbar("تنبيه", "لقد انتها أشتراكك في هذا المساق ولم تجدده بعد");
-    }
-  }
 
   getData() async {
     stateRaqust = StateRaqust.Laoding;
     update();
-    var respones = await _data.getCours(hommeController.model.studentId);
+    var respones = await _data.getCoursNotOver(hommeController.model.studentId);
     stateRaqust = headData(respones);
     if (stateRaqust == StateRaqust.succes) {
       if (respones[AppStatus.status] == AppStatus.sucsess) {
